@@ -5,7 +5,8 @@ import axios from "axios";
 const searchForm = document.getElementById('search-form');
 const gallery = document.querySelector('.gallery');
 const loadBtn = document.querySelector('.load-more');
-querySearch = '';
+let page = 1;
+let querySearch = '';
 const per_page = 40;
 
 const URL = 'https://pixabay.com/api/';
@@ -19,9 +20,8 @@ const API_KEY = '33429969-7270757d2f41ebfedf0bcc7cb';
 
 searchForm.addEventListener ('submit', onSearchImg);
 async function onSearchImg(e) {
-   
     e.preventDefault();
-    let querySearch = searchForm.elements.searchQuery.value.trim();
+   let querySearch = searchForm.elements.searchQuery.value.trim();
     page = 1;
     clearMarkup();
     if (!querySearch) {
