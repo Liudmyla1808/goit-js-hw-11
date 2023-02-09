@@ -1,5 +1,7 @@
 import Notiflix from "notiflix";
 import axios from "axios";
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 
 const searchForm = document.getElementById('search-form');
@@ -43,6 +45,7 @@ async function onSearchImg(e) {
     renderMarkup(res.data.hits);
         Notiflix.Notify.success(`Hooray! We found ${totalPage} images.`);
         addVisible();
+        onSimpleLightBox();
       } catch (error) {
         console.log(error);
       }
@@ -69,7 +72,12 @@ async function onLoadMoreBtn(e) {
     }
     
   }
-
+  function onSimpleLightBox() {
+    new SimpleLightbox('.gallery a', {
+          captionDelay: 250,
+          captionsData: 'alt',
+        }).refresh();
+  }
 function clearMarkup() {
     gallery.innerHTML = "";
   }
