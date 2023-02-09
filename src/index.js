@@ -37,6 +37,7 @@ async function onSearchImg(e) {
         console.log(res);
        let totalPage = res.data.totalHits;
         if (totalPage === 0) {
+          loadMoreBtn.enable();
           Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
           clearMarkup();
           return;
