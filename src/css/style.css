@@ -78,3 +78,6 @@ a {
     width: 100px;
     color: white;
 }
+.hidden {
+    display: none;
+  }

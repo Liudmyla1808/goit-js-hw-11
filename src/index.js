@@ -37,7 +37,6 @@ async function onSearchImg(e) {
         console.log(res);
        let totalPage = res.data.totalHits;
         if (totalPage === 0) {
-          loadMoreBtn.enable();
           Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
           clearMarkup();
           return;
@@ -54,7 +53,7 @@ async function onSearchImg(e) {
 loadBtn.addEventListener('click', onLoadMoreBtn);
 async function onLoadMoreBtn(e) {
     page += 1;
-     let querySearch = form.elements.searchQuery.value.trim();
+    let querySearch = searchForm.elements.searchQuery.value.trim();
     try {
      
       const res = await getImg(querySearch, page);
@@ -119,3 +118,4 @@ function clearMarkup() {
 
     return gallery.insertAdjacentHTML('beforeend', markup)
 }
+
